@@ -1,0 +1,38 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://www.automationexercise.com/');
+  await page.getByRole('link', { name: ' Products' }).click();
+  await page.getByRole('heading', { name: 'All Products' }).click();
+  await page.getByPlaceholder('Search Product').click();
+  await page.getByPlaceholder('Search Product').press('CapsLock');
+  await page.getByPlaceholder('Search Product').fill('T');
+  await page.getByPlaceholder('Search Product').press('CapsLock');
+  await page.getByPlaceholder('Search Product').fill('Top');
+  await page.getByRole('button', { name: '' }).click();
+  await page.getByRole('heading', { name: 'Searched Products' }).click();
+  await page.getByText('Rs. 500 Blue Top Add to cart Rs. 500 Blue Top Add to cart View Product').click();
+  await page.getByText('Rs. 600 Winter Top Add to cart Rs. 600 Winter Top Add to cart View Product').click();
+  await page.getByText('Rs. 400 Summer White Top Add to cart Rs. 400 Summer White Top Add to cart View').click();
+  await page.getByText('Searched Products  Added!').click();
+  await page.locator('.productinfo > .btn').first().click();
+  await page.getByRole('button', { name: 'Continue Shopping' }).click();
+  await page.locator('div:nth-child(4) > .product-image-wrapper > .single-products > .productinfo > .btn').click();
+  await page.getByRole('button', { name: 'Continue Shopping' }).click();
+  await page.locator('div:nth-child(5) > .product-image-wrapper > .single-products > .productinfo > .btn').click();
+  await page.getByRole('button', { name: 'Continue Shopping' }).click();
+  await page.getByRole('link', { name: ' Cart' }).click();
+  await page.getByRole('row', { name: 'Product Image Blue Top Women' }).click();
+  await page.getByRole('row', { name: 'Product Image Winter Top' }).click();
+  await page.getByRole('row', { name: 'Product Image Summer White' }).click();
+  await page.getByRole('link', { name: ' Signup / Login' }).click();
+  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').click();
+  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').fill('roy123@gmail.com');
+  await page.getByPlaceholder('Password').click();
+  await page.getByPlaceholder('Password').fill('roy123');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByRole('link', { name: ' Cart' }).click();
+  await page.getByRole('row', { name: 'Product Image Blue Top Women' }).click();
+  await page.getByRole('row', { name: 'Product Image Winter Top' }).click();
+  await page.getByRole('row', { name: 'Product Image Summer White' }).click();
+});
